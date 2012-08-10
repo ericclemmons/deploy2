@@ -3,5 +3,9 @@
 Simple [Symfony2](http://symfony.com/) app to automate deployments when notified via
 [Travis-CI](http://travis-ci.org/).
 
-_See [Webhook Notification](http://about.travis-ci.org/docs/user/build-configuration/)_
+
+## Resources
+
+* [Travis-CI Webhook Configuration](http://about.travis-ci.org/docs/user/build-configuration/)
+* [Travis-CI Webhook Payload](https://gist.github.com/1225015)
 
