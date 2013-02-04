@@ -1,0 +1,45 @@
+{
+  "title": "Deploy2",
+  "name": "deploy2",
+  "description": "Modern application skeleton - HTML5 Boilerplate + Angular + Express + Grunt + LiveReload + Bootstrap + Bower",
+  "version": "0.0.1",
+  "author": {
+    "name": "Eric Clemmons",
+    "email": "eric@smarterspam"
+  },
+  "homepage": "https://github.com/ericclemmons/deploy2",
+  "bugs": "https://github.com/ericclemmons/deploy2/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/ericclemmons/deploy2/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/grunt build && node src/server/server",
+    "install": "bower install",
+    "test": "./node_modules/.bin/grunt build"
+  },
+  "dependencies": {
+    "bower": "0.6.8",
+    "express": "3.0.5",
+    "grunt": "0.4.0rc7",
+    "grunt-cli": "~0.1.6",
+    "grunt-angular-templates": "0.2.1",
+    "grunt-contrib-clean": "0.4.0rc6",
+    "grunt-contrib-concat": "0.1.2rc6",
+    "grunt-contrib-copy": "0.4.0rc7",
+    "grunt-contrib-jshint": "0.1.1rc6",
+    "grunt-contrib-less": "0.5.0rc7",
+    "grunt-contrib-mincss": "~0.4.0rc7",
+    "grunt-contrib-uglify": "0.1.1rc6",
+    "grunt-contrib-watch": "~0.2.0rc7",
+    "grunt-livereload": "0.1.2",
+    "grunt-usemin": "~0.1.4",
+    "twig": "~0.5.4"
+  }
+}
