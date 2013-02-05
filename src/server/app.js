@@ -7,6 +7,7 @@ var express   = require('express');
 var path      = require('path');
 var api       = require('./lib/api');
 var app       = module.exports = express();
+var child     = require('child_process');
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -27,4 +28,22 @@ if ('development' === app.get('env')) {
 
 app.get('/', function(req, res) {
   res.render('home.twig');
+});
+
+app.all('/hooks/github', function(req, res) {
+  console.log(req.params.payload);
+
+  var payload = req.params.payload;
+  var repo    = payload.repository.url.split('/').slice(-2).join('/');
+  var branch  = payload.ref.split('/').pop();
+  var commit  = payload.after;
+  var bin     = __dirname + '/../../bin';
+  var command = [bin + '/deploy.sh', repo, branch, commit];
+
+  console.log(command.join(' '));
+
+  var deploy = child.exec(command.join(' '), function(error, stdout, stderr) {
+    console.log(stdout);
+    res.send(200, stdout);
+  });
 });
