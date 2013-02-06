@@ -47,7 +47,7 @@ app.post('/hooks/github', function(req, res) {
     return res.send(400, 'Not a valid payload');
   }
 
-  var start   = moment().unix();
+  var start   = moment().format('YYYY-MM-DDTHH:mmZ');
   var repo    = payload.repository.url.split('/').slice(-2).join('/');
   var branch  = payload.ref.split('/').pop();
   var commit  = payload.after;
@@ -64,7 +64,7 @@ app.post('/hooks/github', function(req, res) {
     var deployment = {
       code:     code,
       start:    start,
-      finish:   moment().unix(),
+      finish:   moment().format('YYYY-MM-DDTHH:mmZ'),
       repo:     repo,
       branch:   branch,
       commit:   commit,
