@@ -1,21 +1,31 @@
-<header ng-include="'app/partials/header.html'"></header>
+<div class="row-fluid">
+  <h3>Recent Deployments <small>({{ deployments.length }})</small></h3>
 
-<section id="about">
-  <div class="container-narrow" ng-include="'app/partials/home/about.html'" autoscroll></div>
-</section>
+  <p ng-hide="deployments.length">
+    So far, there is no history of deployments.  Try pushing some code!
+  </p>
 
-<section id="get-started">
-  <div class="container-narrow" ng-include="'app/partials/home/get-started.html'" autoscroll></div>
-</section>
-
-<section id="features">
-  <div class="container-narrow" ng-include="'app/partials/home/features.html'" autoscroll></div>
-</section>
-
-<section id="technology">
-  <div class="container-narrow" ng-include="'app/partials/home/technology.html'" autoscroll></div>
-</section>
-
-<section id="faq">
-  <div class="container-narrow" ng-include="'app/partials/home/faq.html'" autoscroll></div>
-</section>
+  <section ng-repeat="deployment in deployments" class="row-fluid">
+    <div class="span3">
+      <h4  ng-class="statusClass(deployment.code)" class="muted">
+        {{ deployment.start | date:'short' }}
+      </h4>
+    </div>
+    <div class="span3">
+      <h4>
+        <a ng-href="https://github.com/{{ deployment.repo }}">{{ deployment.repo }}</a>
+        <small class="muted">(<a ng-href="https://github.com/{{ deployment.repo }}/tree/{{ deployment.branch }}">{{ deployment.branch }}</a>)</small>
+      </h4>
+    </div>
+    <div class="span5">
+      <ul>
+        <li ng-repeat="commit in deployment.payload.commits">
+          <a ng-href="https://github.com/{{ deployment.repo }}/commit/{{ commit.id }}">{{ commit.message }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="span1">
+      <a class="btn btn-small" ng-href="https://github.com/{{ deployment.repo }}/compare/{{ deployment.payload.before }}..{{ deployment.payload.after }}">Compare</a>
+    </div>
+  </section>
+</div>

@@ -94,7 +94,7 @@ module.exports = (grunt)->
         files:      [
           expand:   true
           cwd:      '<%= dirs.components %>'
-          src:      '<%= files.all %>'
+          src:      'angular-strap/dist/angular-strap.js'
           dest:     '<%= dirs.dist %>/components'
         ]
 

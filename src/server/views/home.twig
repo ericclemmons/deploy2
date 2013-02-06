@@ -1,7 +1,22 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-<div class="well">
-    Howdy
+<div class="row-fluid">
+  <div class="span8">
+
+    <h2>Recent Deployments</h2>
+
+    {% for deployment in deployment %}
+      <h3>{{ deployment.repo }} <small>({{ deployment.branch }})</small></h3>
+
+      <pre>{{ deployment.output.raw }}</pre>
+      <hr>
+    {% endfor %}
+
+  </div>
+
+  <div class="span4 well">
+    {{ deployments }}
+  </div>
 </div>
 {% endblock %}

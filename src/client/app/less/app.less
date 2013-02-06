@@ -3,3 +3,152 @@
  */
 
 @import "../../../../components/bootstrap/less/bootstrap.less";
+@import "../../../../components/bootstrap/less/variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "../../../../components/bootstrap/less/mixins.less";
+@import "../../../../components/bootstrap/less/utilities.less"; // Has to be last to override when necessary
+@import "../../../../components/bootstrap/less/responsive.less";
+
+@fontMultiplier: 2;
+
+@media (min-width: 980px) {
+  /* Fixed navbar needs padding */
+  #app {
+    padding-top: @baseLineHeight * 2;
+  }
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar-fixed-top {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0;
+
+    .navbar-inner {
+      padding: 0;
+    }
+  }
+
+  #content > section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+body {
+  background: #fff;
+}
+
+#content {
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+p.muted {
+  text-align: center;
+}
+
+#about h3 {
+  display: none;
+}
+
+h3 {
+  color: @orange;
+}
+
+section > section {
+  padding-left: @baseLineHeight;
+  border-left: 3px double @grayLighter;
+}
+
+#features {
+  i {
+    position: relative;
+    top: @baseFontSize * 1.25 * @fontMultiplier / 2 - 7;
+  }
+}
+
+header {
+  text-align: center;
+  padding: @baseLineHeight 0;
+
+  a:hover {
+    color: lighten(@linkColor, 66%);
+  }
+}
+
+section {
+  background: @white;
+  padding: @baseLineHeight 0;
+  border-bottom: 1px solid @grayLighter;
+
+  &:only-child,
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+footer {
+  padding: @baseLineHeight 0;
+
+  p {
+    text-align: center;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Wire One', sans-serif;
+  font-weight: normal;
+  margin: 0;
+}
+
+em {
+  font-style: normal;
+  color: @orange;
+}
+
+h1,
+h2,
+h3 { line-height: @baseLineHeight * 2 * @fontMultiplier; }
+
+h1 { font-size: @baseFontSize * 2.75 * @fontMultiplier; } // ~38px
+h2 { font-size: @baseFontSize * 2.25 * @fontMultiplier; } // ~32px
+h3 { font-size: @baseFontSize * 1.75 * @fontMultiplier; } // ~24px
+h4 { font-size: @baseFontSize * 1.25 * @fontMultiplier; line-height: @baseFontSize * 1.25 * @fontMultiplier;} // ~18px
+h5 { font-size: @baseFontSize * @fontMultiplier; }
+h6 { font-size: @baseFontSize * 0.85 * @fontMultiplier; } // ~12px
+
+h1 small { font-size: @baseFontSize * 1.75; } // ~24px
+h2 small { font-size: @baseFontSize * 1.25; } // ~18px
+h3 small { font-size: @baseFontSize * @fontMultiplier * 0.75; }
+h4 small { font-size: @baseFontSize * @fontMultiplier * 0.75; line-height: 0; }
+
+
+h1 {
+  font-size: @baseFontSize * @fontMultiplier * 1.5;
+  line-height: @baseFontSize * 1.5;
+  color: @orange;
+  margin-right: @baseFontSize;
+}
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+
+  hr {
+    margin: 30px 0;
+  }
+}
+
+header h2 {
+  font-size: @baseFontSize * 8;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 1);
+  color: @white;
+  line-height: 1;
+}
