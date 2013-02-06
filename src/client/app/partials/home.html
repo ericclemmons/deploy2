@@ -6,26 +6,34 @@
   </p>
 
   <section ng-repeat="deployment in deployments" class="row-fluid">
-    <div class="span3">
+    <div class="span2">
       <h4  ng-class="statusClass(deployment.code)" class="muted">
-        {{ deployment.start | date:'short' }}
+        {{ deployment.start | date:'MMM d, H:mm a' }}
       </h4>
     </div>
-    <div class="span3">
-      <h4>
-        <a ng-href="https://github.com/{{ deployment.repo }}">{{ deployment.repo }}</a>
-        <small class="muted">(<a ng-href="https://github.com/{{ deployment.repo }}/tree/{{ deployment.branch }}">{{ deployment.branch }}</a>)</small>
-      </h4>
-    </div>
-    <div class="span5">
-      <ul>
-        <li ng-repeat="commit in deployment.payload.commits">
-          <a ng-href="https://github.com/{{ deployment.repo }}/commit/{{ commit.id }}">{{ commit.message }}</a>
-        </li>
-      </ul>
-    </div>
-    <div class="span1">
-      <a class="btn btn-small" ng-href="https://github.com/{{ deployment.repo }}/compare/{{ deployment.payload.before }}..{{ deployment.payload.after }}">Compare</a>
+
+    <div class="span10">
+      <div class="row-fluid">
+        <div class="span4">
+          <h4>
+            <a ng-href="https://github.com/{{ deployment.repo }}">{{ deployment.repo }}</a>
+            <small class="muted">(<a ng-href="https://github.com/{{ deployment.repo }}/tree/{{ deployment.branch }}">{{ deployment.branch }}</a>)</small>
+          </h4>
+        </div>
+        <div class="span6">
+          <ul>
+            <li ng-repeat="commit in deployment.payload.commits">
+              <a ng-href="https://github.com/{{ deployment.repo }}/commit/{{ commit.id }}">{{ commit.message }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span2">
+          <a class="btn btn-small pull-right" ng-href="https://github.com/{{ deployment.repo }}/compare/{{ deployment.payload.before }}..{{ deployment.payload.after }}">Compare</a>
+        </div>
+      </div>
+
+      <hr ng-show="deployment.code">
+      <pre ng-show="deployment.code">{{ deployment.output.raw }}</pre>
     </div>
   </section>
 </div>
