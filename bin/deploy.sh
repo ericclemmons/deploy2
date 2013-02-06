@@ -18,14 +18,23 @@ setup ()
     local TMP="${TMPDIR}/tmp/deploy2/$1"
 
     if [ ! -d "${TMP}/.git" ] ; then
+        echo "Creating ${TMP}..."
         mkdir -p $TMP
+
+        echo "Cloning git@github.com:$1.git@$2"
         git clone --depth=100 --branch=$2 "git@github.com:$1.git" $TMP
     fi
 
+    echo "Switching to $TMP..."
     cd $TMP
 
+    echo "Fetching origin..."
     git fetch origin
+
+    echo "Checking out $3..."
     git checkout -qf $3
+
+    return $?
 }
 
 # Custom deployment script
@@ -37,6 +46,8 @@ deploy ()
     esac
 
     echo cap $stage deploy --set branch=$2
+
+    return $?
 }
 
 setup $@ && deploy $@
