@@ -31,7 +31,12 @@ setup ()
 # Custom deployment script
 deploy ()
 {
-    cap staging deploy --set branch=$2
+    case "$2" in
+        "develop") stage="staging" ;;
+        "master") stage="production" ;;
+    esac
+
+    echo cap $stage deploy --set branch=$2
 }
 
 setup $@ && deploy $@
