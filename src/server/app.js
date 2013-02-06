@@ -38,7 +38,7 @@ app.get('/api/deployments', function(req, res) {
   res.send(app.locals.deployments);
 });
 
-app.all('/hooks/github', function(req, res) {
+app.post('/hooks/github', function(req, res) {
   var payload;
 
   try {
