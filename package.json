@@ -25,7 +25,7 @@
     "test": "./node_modules/.bin/grunt build"
   },
   "dependencies": {
-    "bower": "0.6.8",
+    "bower": "1.8.8",
     "express": "3.0.5",
     "grunt": "0.4.0rc7",
     "grunt-cli": "~0.1.6",
